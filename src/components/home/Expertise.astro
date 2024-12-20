@@ -38,7 +38,6 @@ const features = [
   },
 ];
 ---
-
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
@@ -57,7 +56,6 @@ const features = [
               >
                 <dt
                   class="border-b text-lg transition"
-                  x-cloak
                   x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-900/10 dark:border-primary-300/10': !(isOpen || isNextOpen) }"
                 >
                   <button
@@ -72,8 +70,8 @@ const features = [
                       <span class="font-medium">{feature.name}</span>
                       <span class="ml-6 flex h-7 items-center">
                         <svg
-                          class="text-primary-600 dark:text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
-                          x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
+                          class="text-primary-600 dark:text-primary-400 h-6 w-6 transition-transform duration-200 ease-in-out"
+                          x-bind:style="{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
@@ -85,8 +83,13 @@ const features = [
                     </div>
                   </button>
                 </dt>
-                <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
+                <dd 
+                  class="overflow-hidden transition-[max-height] duration-300 ease-in-out" 
+                  id={feature.id} 
+                  x-ref="container{index}"
+                  x-bind:style="isOpen ? { maxHeight: $refs['container' + index].scrollHeight + 'px' } : { maxHeight: '0px' }"
+                >
+                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base py-6 pr-6">
                     {feature.description}
                   </p>
                 </dd>
