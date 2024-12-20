@@ -4,6 +4,7 @@ import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
+  trailingSlash: 'never',
   experimental: {
     viewTransitions: true,
   },
