@@ -14,6 +14,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
+      logo: ['Monotype Corsiva', 'sans-serif'],
     },
     fontSize: {
       xs: ['0.75rem', '1rem'],
@@ -27,5 +28,4 @@ module.exports = {
       '5xl': ['3rem', '3.5rem'],
       '6xl': ['3.75rem', '4.25rem'],
     },
-  },
 };
